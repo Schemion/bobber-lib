@@ -1,8 +1,14 @@
+import os
+import sys
 import threading
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 import grpc
+
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
 
 import bobber.main as main
 from bobber.proto import broker_pb2
