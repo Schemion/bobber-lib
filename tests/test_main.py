@@ -1,19 +1,11 @@
-import os
-import sys
 import threading
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 import grpc
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../bobber"))
-PROTO = os.path.join(ROOT, "proto")
-for p in (ROOT, PROTO):
-    if p not in sys.path:
-        sys.path.insert(0, p)
-
-import main
-from proto import broker_pb2
+import bobber.main as main
+from bobber.proto import broker_pb2
 
 
 class DummyRpcError(grpc.RpcError):
@@ -29,12 +21,16 @@ class DummyRpcError(grpc.RpcError):
 
 
 def _make_client(stub):
-    with patch("main.grpc.insecure_channel") as mock_channel, \
-         patch("main.broker_pb2_grpc.BrokerServiceStub", return_value=stub):
+    with patch("bobber.main.grpc.insecure_channel") as mock_channel, \
+         patch("bobber.main.broker_pb2_grpc.BrokerServiceStub", return_value=stub):
         channel = MagicMock()
         mock_channel.return_value = channel
         client = main.BobberClient("host", 123)
         return client, channel
+
+
+def test_main_importable():
+    assert main.BobberClient is not None
 
 
 def test_healthcheck_ok():
