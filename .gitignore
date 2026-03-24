@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / run-time files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.swp
+
+# Virtual environment
+venv/
+env/
+.venv/
+lib/python*/site-packages/
+
+# IDE-specific files
+.idea/
+.vscode/
+*.iml
+
+# Build artifacts and packaging
+dist/
+build/
+*.egg-info/
+.coverage
+
+# Temporary files and data
+.pytest_cache/
+.tox/
+.mypy_cache/
+.ruff_cache/
+*.sqlite3 # For Django databases
+
+# OS and miscellaneous
+.DS_Store # macOS
+Thumbs.db # Windows
+.env # Environment variables/sensitive info
+
+# Jupyter Notebook specific (if used)
+.ipynb_checkpoints
