@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "bobber"
+version = "0.1.0"
+description = "Python library for bob-the-broker grpc message broker"
+authors = ["Vladislav <vlad2004ki@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

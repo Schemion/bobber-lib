@@ -28,7 +28,7 @@ class BobberClient:
             logger.info(f'Produced {topic}:{key}:{value}')
             return True
         except grpc.RpcError as e:
-            logger.error(f'Failed to produce {topic}:{key}:{value}. Error: {e.code()} - {e.details()}')
+            logger.error(f'Failed to produce {topic}:{key}:{value}. Error: {e}')
             return False
 
     def fetch(self, topic: str, partition: int = 0, offset: int = 0, limit: int = 10) -> List[dict]:
@@ -48,7 +48,7 @@ class BobberClient:
                 })
             return messages
         except grpc.RpcError as e:
-            logger.error(f'Failed to fetch {topic}:{partition}:{offset}. Error: {e.code()}')
+            logger.error(f'Failed to fetch {topic}:{partition}:{offset}. Error: {e}')
             return []
 
     def subscribe(self, topic: str, callback: Callable[[dict], None]) -> threading.Thread:
@@ -73,7 +73,7 @@ class BobberClient:
                 if e.code() == grpc.StatusCode.CANCELLED:
                     logger.info('Subscribe cancelled by client.')
                 else:
-                    logger.error(f'Failed to subscribe to \'{topic}\', error: {e.code()}')
+                    logger.error(f'Failed to subscribe to \'{topic}\', error: {e}')
 
         thread = threading.Thread(target=_listen, daemon=True)
         thread.start()

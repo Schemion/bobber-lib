@@ -36,3 +36,5 @@ Thumbs.db # Windows
 
 # Jupyter Notebook specific (if used)
 .ipynb_checkpoints
+
+poetry.lock
