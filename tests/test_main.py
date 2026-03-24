@@ -6,7 +6,7 @@ from unittest.mock import MagicMock, patch
 
 import grpc
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../src"))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../bobber"))
 PROTO = os.path.join(ROOT, "proto")
 for p in (ROOT, PROTO):
     if p not in sys.path:
