@@ -3,7 +3,7 @@ import threading
 import logging
 from typing import Callable, List
 
-from .proto import broker_pb2_grpc, broker_pb2
+from proto import broker_pb2_grpc, broker_pb2
 
 logging.basicConfig(level=logging.INFO, format='[BOBBER] %(message)s')
 logger = logging.getLogger()
